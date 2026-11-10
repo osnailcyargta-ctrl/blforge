@@ -28,10 +28,30 @@ function hashStr(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 
 
 // ---------- Blockly ----------
 function initBlockly() {
+  const dark = Blockly.Theme.defineTheme('blfDark', {
+    base: Blockly.Themes.Zelos === undefined ? Blockly.Themes.Classic : Blockly.Themes.Classic,
+    componentStyles: {
+      workspaceBackgroundColour: '#0a0f1c',
+      toolboxBackgroundColour: '#0b1120',
+      toolboxForegroundColour: '#9fb2d8',
+      flyoutBackgroundColour: '#0d1322',
+      flyoutForegroundColour: '#9fb2d8',
+      flyoutOpacity: 0.98,
+      scrollbarColour: '#1d2a45',
+      scrollbarOpacity: 0.7,
+      insertionMarkerColour: '#37e6a5',
+      insertionMarkerOpacity: 0.6,
+      markerColour: '#37e6a5',
+      cursorColour: '#37e6a5',
+      selectedGlowColour: '#37e6a5',
+      replacingColour: '#37e6a5',
+    },
+    fontStyle: { family: '"Segoe UI", Roboto, sans-serif', size: 12, weight: '600' },
+  });
   APP.ws = Blockly.inject('blocklyDiv', {
     toolbox: BLF.toolboxEasy,
     renderer: 'zelos',
-    theme: undefined,
+    theme: dark,
     grid: { spacing: 26, length: 3, colour: '#16213a', snap: true },
     zoom: { controls: true, wheel: true, pinch: true, startScale: 0.9, minScale: 0.4, maxScale: 1.6 },
     trashcan: true,
